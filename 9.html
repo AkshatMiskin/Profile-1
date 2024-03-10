@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pay Role Management</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			color: white;
+			overflow: hidden;
+
+		}
+
+		header {
+			height: 100vh;
+			width: 100vw;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: rgb(66, 122, 152);
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+
+		}
+
+		.container {
+			height: 400px;
+			width: 500px;
+			background-image: linear-gradient(90deg, rgb(16, 125, 4), rgb(193, 228, 20));
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			border-radius: 0.3rem;
+			padding: 1rem 1rem;
+
+		}
+
+		.submit {
+			width: 10rem;
+			margin: 1rem;
+			background-color: rgb(0, 159, 0);
+			color: white;
+			border: none;
+			border-radius: 0.2rem;
+			transition: all 0.3s;
+		}
+
+		.submit:hover {
+			background-color: rgb(0, 133, 0);
+		}
+
+		h3 {
+			margin: 1rem 0rem;
+		}
+
+		input {
+			padding: 0.6rem;
+			color: black
+		}
+
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(8, 1fr);
+			column-gap: 1rem;
+			text-align: center;
+		}
+
+		.col {
+			border-right: solid 0.4px;
+			padding-right: 0.3rem;
+			padding-top: 1rem;
+		}
+
+		.one {
+			font-size: 0.8rem;
+		}
+
+		.eight {
+			border: none;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="container">
+			<form>
+				<h3>Enter Total Bill Amount</h3>
+				<input type="text" placeholder="Enter Amount" class="amount">
+				<h3>Enter Total Cash Paid</h3>
+				<input type="text" placeholder="Enter Cash Paid" class="cash">
+			</form>
+			<input type="submit" class="submit">
+
+			<h3>Changes to be Returned</h3>
+			<div class="grid-container">
+				<div class="col one">Notes</div>
+				<div class="col">2000</div>
+				<div class="col">500</div>
+				<div class="col">100</div>
+				<div class="col">20</div>
+				<div class="col">10</div>
+				<div class="col">5</div>
+				<div class="col eight">1</div>
+				<div class="col one">No. of Notes</div>
+				<div class="col number two-thousand">0</div>
+				<div class="col number five-hundred">0</div>
+				<div class="col number hundred">0</div>
+				<div class="col number twenty">0</div>
+				<div class="col number ten">0</div>
+				<div class="col number five">0</div>
+				<div class="col number eight one-rupee">0</div>
+			</div>
+		</div>
+	</header>
+	<script>
+		var btn = document.querySelector(".submit");
+		btn.addEventListener("click", myfunc);
+		function myfunc() {
+			var amt = document.querySelector(".amount").value;
+			var cash = document.querySelector(".cash").value;
+			amt = parseInt(amt);
+			cash = parseInt(cash);
+			var diff = cash - amt;
+			console.log(amt);
+			console.log(cash);
+			console.log(diff);
+			var arr = [0, 0, 0, 0, 0, 0, 0];
+			if (!isNaN(amt) && !isNaN(cash) && amt <= cash) {
+
+				var one = document.querySelector(".two-thousand");
+				var two = document.querySelector(".five-hundred");
+				var three = document.querySelector(".hundred");
+				var four = document.querySelector(".twenty");
+				var five = document.querySelector(".ten");
+				var six = document.querySelector(".five");
+				var seven = document.querySelector(".one-rupee");
+
+				arr[0] = Math.floor(diff / 2000);
+				arr[1] = Math.floor((diff % 2000) / 500);
+				arr[2] = Math.floor(((diff % 2000) % 500) / 100);
+				arr[3] = Math.floor((((diff % 2000) % 500) % 100) / 20);
+				arr[4] = Math.floor(((((diff % 2000) % 500) % 100) % 20) / 10);
+				arr[5] = Math.floor((((((diff % 2000) % 500) % 100) % 20) % 10) / 5);
+				arr[6] = Math.floor(((((((diff % 2000) % 500) % 100) % 20) % 10) % 5) / 1);
+				one.innerText = arr[0];
+				two.innerText = arr[1];
+				three.innerText = arr[2];
+				four.innerText = arr[3];
+				five.innerText = arr[4];
+				six.innerText = arr[5];
+				seven.innerText = arr[6];
+
+			}
+			else {
+				alert("Enter Valid Amount and Cash");
+			}
+		}
+	</script>
+</body>
+
+</html>
