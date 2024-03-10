@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Tracker</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .task {
+    margin-bottom: 8px;
+  }
+  .delete-btn {
+    cursor: pointer;
+    color: brown;
+    margin-left: 8px;
+    display: none;
+  }
+  .delete-btn:hover {
+    text-decoration: underline;
+  }
+  .task:hover .delete-btn {
+    display: inline;
+  }
+</style>
+</head>
+<body>
+<h2>Task Tracker</h2>
+<input type="text" id="taskInput" placeholder="Enter task...">
+<button id="addTaskBtn">Add Task</button>
+<ul id="taskList"></ul>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const taskInput = document.getElementById("taskInput");
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const taskList = document.getElementById("taskList");
+
+    addTaskBtn.addEventListener("click", function() {
+      const taskText = taskInput.value.trim();
+      if (taskText !== "") {
+        const taskItem = createTaskElement(taskText);
+        taskList.appendChild(taskItem);
+        taskInput.value = "";
+      }
+    });
+
+    function createTaskElement(taskText) {
+      const taskItem = document.createElement("li");
+      taskItem.className = "task";
+      taskItem.textContent = taskText;
+      const deleteBtn = document.createElement("span");
+      deleteBtn.className = "delete-btn";
+      deleteBtn.textContent = "Delete Task";
+      deleteBtn.addEventListener("click", function() {
+        taskItem.remove();
+      });
+      taskItem.appendChild(deleteBtn);
+      return taskItem;
+    }
+  });
+</script>
+</body>
+</html>
