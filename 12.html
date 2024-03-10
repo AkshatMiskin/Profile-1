@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+            background-color: aquamarine;
+        }
+
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        header {
+            color: white;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        svg {
+            height: 120%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .bottom-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 150px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 650px;
+            position: relative;
+        }
+
+        input {
+            width: 70%;
+            border: none;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
+            box-sizing: border-box;
+
+        }
+
+        #submit-icon {
+            position: absolute;
+            top: 10px;
+            right: 30px;
+        }
+
+        .images-section {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .enter {
+            height: 30px;
+            width: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .enter:hover {
+            cursor: pointer;
+        }
+
+        .image-container {
+            width: 48%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
+
+        }
+
+        .image-container img {
+            width: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI Image Generator</h1>
+    </header>
+    <section class="images-section"></section>
+    <section class="bottom-section">
+        <div class="input-container">
+            <input type="text">
+            <div id="submit-icon"><svg class="enter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <rect width="256" height="256" fill="none" />
+                    <path
+                        d="M219.5,121,50.6,26.4a8,8,0,0,0-11.4,9.7L71,125.3a7.2,7.2,0,0,1,0,5.4L39.2,219.9a8,8,0,0,0,11.4,9.7L219.5,135A8,8,0,0,0,219.5,121Z"
+                        fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" />
+                    <line x1="72" y1="128" x2="136" y2="128" fill="none" stroke="#000" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="24" />
+                </svg></div>
+        </div>
+
+    </section>
+
+    <script>
+        const API_KEY = "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";
+        const submitIcon = document.querySelector(".enter");
+        const inputElement = document.querySelector("input");
+        const imageSection = document.querySelector(".images-section");
+
+        var flag = 0;
+        getImages = async () => {
+            if (flag % 2 == 0) {
+                const options = {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${API_KEY}`,
+                        "Content-Type": "application/JSON"
+                    },
+                    body: JSON.stringify({
+                        prompt: inputElement.value,
+                        n: 2,
+                        size: "1024x1024"
+                    })
+                }
+                try {
+                    const response = await fetch("https://api.openai.com/v1/images/generations", options)
+                    const data = await response.json()
+                    console.log(data);
+                    data?.data.forEach(imageObject => {
+                        const imageContainer = document.createElement("div");
+                        imageContainer.classList.add("image-container");
+                        const imageElement = document.createElement("img");
+                        imageElement.setAttribute("src", imageObject.url);
+                        imageContainer.append(imageElement)
+                        imageSection.append(imageContainer);
+                    })
+                }
+
+                catch (error) {
+                    console.log(error);
+                }
+
+            }
+            else {
+                location.reload();
+            }
+            flag++;
+
+        }
+
+        submitIcon.addEventListener("click", getImages)
+    </script>
+</body>
+
+</html>
