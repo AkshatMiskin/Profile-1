@@ -1,131 +1,237 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Project-1</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile-Page</title>
     <style>
         body {
-          background-color : Azure;
+            background-color: Azure;
         }
 
         .links {
-          width:1650px;
-            padding-left : 25px;
-            padding-right : 25px;
-            padding-top : 15px;
-            padding-bottom : 35px;
-            background-color : gray;
+            /* width: 1650px; */
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 15px;
+            padding-bottom: 35px;
+            background-color: gray;
         }
+
         .image {
-          margin-top : 100px;
-          border : 5px solid azure;
-          height : 200px;
-          width : 200px;
+            margin-top: 100px;
+            border: 5px solid azure;
+            height: 200px;
+            width: 200px;
         }
+
         .resume {
-          margin-left : 0px;
-          margin-right : 20%;
-          margin-left : 0px;
-          transition: background-color 0.3s;
-          transition: padding 0.3s;
+            margin-left: 0px;
+            margin-right: 20%;
+            margin-left: 0px;
+            transition: background-color 0.3s;
+            transition: padding 0.3s;
         }
-        .resume:hover{
-          background-color : white;
-          color : gray;
-          padding : 5px;
+
+        .resume:hover {
+            background-color: white;
+            color: gray;
+            padding: 5px;
 
         }
-        .academics:hover{
-          background-color : white;
-          padding : 5px;
-          color : gray;
+
+        .academics:hover {
+            background-color: white;
+            padding: 5px;
+            color: gray;
         }
+
         .academics {
-          float : left;
-          margin-left : 0px;
-          margin-right : 20%;
-          transition: background-color 0.3s;
-          transition: padding 0.3s;
-          
+            float: left;
+            margin-left: 0px;
+            margin-right: 10%;
+            transition: background-color 0.3s;
+            transition: padding 0.3s;
+
         }
+
         .cp {
-          float : left;
-          margin-left : 0px;
-          margin-right : 20px;
-          transition: background-color 0.3s;
-          transition: padding 0.3s;
-          
+            float: left;
+            /* margin-left : ; */
+            margin-right: 10%;
+            transition: background-color 0.3s;
+            transition: padding 0.3s;
+
         }
+
         .cp:hover {
-          background-color : white;
-          color : gray;
-          padding : 5px;
+            background-color: white;
+            color: gray;
+            padding: 5px;
         }
+
         .mail {
-          float: right;
+            float: right;
         }
+
         .Intro {
-            position : absolute;
-            top : 400px;
-            left : 550px;
-            right : 550px;
-            text-align : left;
-            font-family : Verdana;
-            font-size : 18px;
-            border : 2px solid blue;
-            border-radius : 25px;
-            background-color : wheat;
+            position: absolute;
+            top: 400px;
+            left: 550px;
+            right: 550px;
+            text-align: left;
+            font-family: Verdana;
+            font-size: 18px;
+            border: 2px solid blue;
+            border-radius: 25px;
+            background-color: wheat;
         }
+
         .chef {
-          margin-right : 15px;
+            margin-right: 15px;
         }
-        .Projects{
-          color : blue;
+
+        .Projects {
+            color: blue;
         }
-        .link{
-          color : black;
-          transition: color 0.5s;
+
+        .link {
+            color: black;
+            transition: color 0.5s;
         }
+
         .link:hover {
-          color : blue;
+            color: blue;
         }
+
         .link:visited {
-          color : purple;
+            color: purple;
         }
-        .link:active{
-          color : red;
+
+        .link:active {
+            color: red;
+        }
+
+        .images {
+            height: 250px;
+            width: 450px;
+        }
+
+        div.scrollmenu {
+            /* position: absolute; */
+            /* top : 600px; */
+            margin-top: 200px;
+            background-color: #333;
+            overflow: none;
+            white-space: nowrap;
+        }
+
+        div.scrollmenu a {
+            /* position: absolute; */
+            /* top: 600px; */
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+            background-color: #777;
+        }
+
+        .project-heading {
+            position: absolute;
+            top: 500px;
+            font-family: Verdana;
+            text-decoration: underline;
+            color: black;
+        }
+
+        .tooltip {
+            position: absolute;
+            color: white;
+            font-size: 15px;
+            background-color: gray;
+            pointer-events: none;
+            padding: 4px;
+            border-radius: 4px;
+            bottom: 50px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .pr:hover .tooltip {
+            opacity: 1;
+        }
+
+        .pr:hover {
+            background-color: #faf5ff;
+            color: #a855f7;
         }
     </style>
-  </head>
-  <body>
-    <div class = "links" >
-      <!--<a href="Resume.htm" class = "resume">Resume</a>-->
-      <a href="index_academics.htm" class = "academics">Academics</a>
-      <span class = "cp">Coding Profile &#8211;&#8211;&#62;</span>
-      <a href="https://www.codechef.com/users/miskinakshat36" class = "cp">Codechef</a>
-      <a href="https://codeforces.com/profile/Akshat_Miskin" class = "cp">Codeforces</a>
-      <a href="mailto:'miskinakshat362@gmail.com'" class="mail">Contact Me</a>
+</head>
+
+<body>
+    <div class="links">
+        <!--<a href="Resume.htm" class = "resume">Resume</a>-->
+        <a href="index_academics.htm" class="academics">Academics</a>
+        <!-- <a href = "Projects.html" class = "academics">Projects</a> -->
+        <!-- <span class = "cp">Coding Profile &#8211;&#8211;&#62;</span> -->
+        <a href="https://www.codechef.com/users/miskinakshat36" class="cp">Codechef Profile</a>
+        <a href="https://codeforces.com/profile/Akshat_Miskin" class="cp">Codeforces Profile</a>
+        <a href="mailto:'miskinakshat362@gmail.com'" class="mail">Contact Me</a>
     </div>
-    <div><center><img src="IMG_1787.jpg" alt="Image not available" class = "image"></center></div>
-    <div class = "Intro">
-        <ul class = "basic">
+    <div>
+        <center><img src="IMG_1787.jpg" alt="Image not available" class="image"></center>
+    </div>
+    <div class="Intro">
+        <ul class="basic">
             <li>I am Akshat Miskin</li>
             <li>I am a first year undergrad at IIIT Allahabad</li>
-            <li>My Projects :-</li>
-            <ul type = "square" class = "Projects">
-              <li><a href = "1.html" class = "link" target="_blank">Sliding-Window Login Page</a></li>
-              <li><a href = "2.html" class = "link" target="_blank">Student Grade Calculator</a></li>
-              <li><a href = "3.html" class = "link" target="_blank">Navigator Bar on Scroll</a></li>
-              <li><a href = "4.html" class = "link" target="_blank">BMI Calculator</a></li>
-              <li><a href = "5.html" class = "link" target="_blank">Task Tracker</a></li>
-              <li><a href = "6.html" class = "link" target="_blank">Network Speed Tracker</a></li>
-              <li><a href = "7.html" class = "link" target="_blank">Tip Calculator</a></li>
-              <li><a href = "8.html" class = "link" target="_blank">Analog Clock</a></li>
-              <li><a href = "9.html" class = "link" target="_blank">Payrole Management</a></li>
-              <li><a href = "10.html" class = "link" target="_blank">Mouse Move Parallax Effects</a></li>
-              <li><a href = "11.html" class = "link" target="_blank">Text to Speech Coneverter</a></li>
-              <li><a href = "12.html" class = "link" target="_blank">AI Image Generator</a></li>
-            </ul>
         </ul>
-    </div>  
-  </body>
+    </div>
+    <div class="project-heading">
+        <h2>MY PROJECTS :-</h2>
+    </div>
+    <div class="scrollmenu">
+        <a href="1.html" class="pr" target="_blank"><img src="1.png" class="images">
+            <div class="tooltip">Sliding Window Login Screen</div>
+        </a>
+        <a href="2.html" class="pr" target="_blank"><img src="2.png" class="images">
+            <div class="tooltip">Student Grade Calculator</div>
+        </a>
+        <a href="3.html" class="pr" target="_blank"><img src="3.png" class="images">
+            <div class="tooltip">Navigation Bar On Scroll</div>
+        </a>
+        <a href="4.html" class="pr" target="_blank"><img src="4.png" class="images">
+            <div class="tooltip">BMI Calculator</div>
+        </a>
+        <a href="5.html" class="pr" target="_blank"><img src="5.png" class="images">
+            <div class="tooltip">Task Tracker</div>
+        </a>
+        <a href="6.html" class="pr" target="_blank"><img src="6.png" class="images">
+            <div class="tooltip">Network Speed Tracker</div>
+        </a>
+        <a href="7.html" class="pr" target="_blank"><img src="7.png" class="images">
+            <div class="tooltip">Tip Calculator</div>
+        </a>
+        <a href="8.html" class="pr" target="_blank"><img src="8.png" class="images">
+            <div class="tooltip">Analog Clock</div>
+        </a>
+        <a href="9.html" class="pr" target="_blank"><img src="9.png" class="images">
+            <div class="tooltip">Payroll Management</div>
+        </a>
+        <a href="10.html" class="pr" target="_blank"><img src="10.png" class="images">
+            <div class="tooltip">Mouse Move Parallax Effect</div>
+        </a>
+        <a href="11.html" class="pr" target="_blank"><img src="11.png" class="images">
+            <div class="tooltip">Text to Speech Converter</div>
+        </a>
+        <a href="12.html" class="pr" target="_blank"><img src="12.png" class="images">
+            <div class="tooltip">AI Image Generator</div>
+        </a>
+    </div>
+</body>
+
 </html>
